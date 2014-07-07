@@ -230,7 +230,7 @@ if (you.lifePoints > 0) {
   $('.main-text').html('You just earned ' + pointsChange + ' Life Points for going to college. Cool. Now what?');
   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
 
-  }); 
+  // }); 
 
 
   $('.afterCollege').on('click', function(){
@@ -242,11 +242,34 @@ if (you.lifePoints > 0) {
   if (you.lifePoints > 0) {
     you.elem.find('input').val(you.lifePoints);
   }
+
+   if(pointsChange > 0){
+      $('.main-text').html('You just earned ' + pointsChange + ' for changing to a healthy diet. Good for you!');
+    }
+
+    if(pointsChange < 0){
+      $('.main-text').html('You just lost ' + pointsChange + ' for running over a possom with your car. Rude.');
+    }
+
+    if (you.lifePoints >= 200){
+      $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+    }
+
+    if (you.lifePoints <= 0){
+      $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+    }
 });
+
+});
+
+
+//earning and losing points
 
 $('.travelButton').on('click', function(){
 
-  pointsChange= _.random(-50,10);
+  pointsChange= _.random(-50,50);
 
   you.lifePoints += pointsChange;
 
@@ -258,9 +281,25 @@ $('.travelButton').on('click', function(){
       $('.main-text').html('You just lost ' + pointsChange + ' Life Points for getting Malaria. Oops. Now what?');
     }
 
+
+//win, lose, or continue?
+
+
+ 
   if (you.lifePoints > 0){
     you.elem.find('input').val(you.lifePoints);
   }
+
+ if (you.lifePoints >= 200){
+    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+  }
+
+  if (you.lifePoints <= 0){
+    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+  }
+
 
   $('.collegeButtonHolder').remove();
   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
@@ -269,7 +308,7 @@ $('.travelButton').on('click', function(){
 
 $('.partyButton').on('click', function(){
 
-  pointsChange= _.random(-50, 10);
+  pointsChange= _.random(-50, 50);
 
   you.lifePoints += pointsChange;
 
@@ -289,6 +328,22 @@ $('.partyButton').on('click', function(){
   
   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
 
+
+//win, lose, continue?
+
+  if (you.lifePoints >= 200){
+    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+  }
+  if (you.lifePoints > 0){
+    you.elem.find('input').val(you.lifePoints);
+  }
+
+  if (you.lifePoints <= 0){
+    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+  }
+
   });
 
 
@@ -304,8 +359,6 @@ $('.partyButton').on('click', function(){
   $('.poorButton1').on('click', function(){
       $(this).remove();
 
-
-
       $('<div class="poorButtonHolder"></div>').replaceAll('.poorButton');
       $('.poorButtonHolder').append('<button class="communityCollegeButton">Want school? Choose me.</button>');
       $('.poorButtonHolder').append('<button class="gangButton">Want street-cred? Choose me.</button>');
@@ -314,7 +367,64 @@ $('.partyButton').on('click', function(){
 
 });
 
+  $('.communityCollegeButton').on('click', function(){
+
+     pointsChange= _.random(-50, 50);
+
+    you.lifePoints += pointsChange;
+
+  if (you.lifePoints > 0){
+    you.elem.find('input').val(you.lifePoints);
+  }
+
+  $('.poorButtonHolder').remove();
+
+    if (pointsChange > 0) {
+      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
+    }
+
+    else {
+      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
+    }
+  
+  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
+
+  if (you.lifePoints <= 0){
+    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+  }
+
+   if (you.lifePoints >= 200){
+    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+  };
+
 });
+
+});
+
+
+// $('.partyButton').on('click', function(){
+
+//   pointsChange= _.random(-50, 50);
+
+//   you.lifePoints += pointsChange;
+
+//   if (you.lifePoints > 0){
+//     you.elem.find('input').val(you.lifePoints);
+//   }
+
+//   $('.collegeButtonHolder').remove();
+
+//     if (pointsChange > 0) {
+//       $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
+//     }
+
+//     else {
+//       $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
+//     }
+  
+//   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
 // var process_attack = function (attacker, attackee) {
 
 //   // Reset our Attack Button
