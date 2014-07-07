@@ -1,10 +1,8 @@
 
 //Chooses a player's given attributes.
-
-
 var lifePoints = $('#lifePoints'),
     lifeBTN = $('#lifeButton'),
-    damage;
+    pointsChange;
 
 
 var Player = function (options) {
@@ -77,6 +75,8 @@ var randoItem = function (array) {
  		console.log (you.lifePoints);
 
 
+
+
  		if (you.lifePoints === 84){
       $('.main-text').animate().html("You are born. Life has chosen for you to be " + rand_gender + ", " + rand_money + ", " + rand_race + ", and have "
         + rand_parents + " parents. Born poor and not white. It's not going to be an easy life for you, but don't give up. Life can be wonderful\
@@ -104,8 +104,7 @@ var randoItem = function (array) {
   else if (you.lifePoints === 95 ){
       $('.main-text').animate().html("You are born. Life has chosen for you to be " + rand_gender + ", " + rand_money + ", " + rand_race + ", and have "
         + rand_parents + " parents. Well, you're born into pretty good circumstances.\
-         Being a woman, though, has its challenges. As long as you are perfectly sexy, but not slutty, smart,\
-          but not too smart, tough but not bitchy, and all the other things women are supposed to be,\
+         Being a woman, though, has its challenges. As long as you are gorgeous, \
            life should be a cake. Oh... and don't eat cake. You'll get fat.");
 
   }
@@ -186,56 +185,116 @@ var randoItem = function (array) {
         + rand_parents + " parents.");
 	}
 
-})
+
+if (you.lifePoints > 0) {
+
+    // Update the individual attacked's health visually
+    you.elem.find('input').val(you.lifePoints);
+    $('.player').animate().css('visibility', 'visible');
+  
+
+}
+  $(this).remove();
 
 
 
 
- 
+  if (rand_money == 'rich'){
+
+    $('.richButton').append('<button class="richButton1">Ready to continue?</button>');
+
+  }
+
+  $('.richButton1').on('click', function(){
+      $(this).remove();
+
+      $('.moreButtons').append('<button class="collegeButton">Want college? Choose me.</button>');
+      $('.moreButtons').append('<button class="travelButton">Want travel? Choose me.</button>');
+      $('.moreButtons').append('<button class="partyButton">Want party? Choose me.</button>');
+      $('.main-text').html('Being rich gives you certain options...');
 
 
 
-// // $('.birthButton').on('click',function(){
-// // 	$("<button class='lifeButton'> Now it gets real </button>").replaceAll('.birthButton');
-// //  });
+  $('.collegeButton').on('click',function(){
+    pointsChange = _.random(10, 20);
+
+    you.lifePoints += pointsChange;
+    
+    if (you.lifePoints > 0){
+      you.elem.find('input').val(you.lifePoints);
+
+  };
+  
+  });  
+});
+});
 
 
-// //Setup
+// var process_attack = function (attacker, attackee) {
 
-// var lifePoints = $('#lifePoints'),
-//     lifeBTN = $('#lifeButton'),
-//     damage;
+//   // Reset our Attack Button
+//   attackBTN.prop('disabled', false).text('Attack');
 
+//   // Generate a new damage value each time
+//   damage = _.random(5, 20);
 
-// var Player = function (options) {
-//   var options = options || {};
-//   this.name = options.name;
-//   this.lifePoints = 100;
-//   this.choose = function (target) {
-//     process_choice(this, target);
-//   };
-//   this.elem = options.elem;
+//   // Lower the attackee's health
+//   attackee.health -= damage;
+
+//   // If Attackee is still alive, decrease health!
+//   if (attackee.health > 0) {
+
+//     // Update the individual attacked's health visually
+//     attackee.elem.find('input').val(attackee.health);
+  
+//     // When we attack a monster, he fights back
+//     if (attackee instanceof Monster) {
+//       console.log('You were attacked back');
+//       attackBTN.prop('disabled', true).text('Defending...');
+//       _.delay(process_attack, 1000, attackee, attacker);
+//     }
+
+//   } else {
+
+//     if (attackee instanceof Player) {
+//       // You Loose!!
+//       $('body').empty().css('background', 'url(http://goo.gl/0fmNnb)');
+//     } else {
+//       // You Win!!
+//       $('body').empty().css('background', 'url(http://goo.gl/zeyWpy)');
+//     }
+
+//   }
 // };
-
-// var Challenge = function (options) {
-//   var options = options || {};
-//   this.name = options.name;
-//   this.lifePoints = 100;
-//   this.elem = options.elem;
-// };
+  
 
 
-// var you = new Player ({
-// 	name: 'You',
-// 	elem: $('.player')
-// })
+//  // Function to attack a Monster
+// // This function should be broken down a little bit more, but you get the point.
+// var process_attack = function (attacker, attackee) {
 
-// var challenge = new Challenge ({
-//   name: 'Challenge',
-//   elem: $('.challenge')
-// });
+//   // Reset our Attack Button
+//   attackBTN.prop('disabled', false).text('Attack');
+
+//   // Generate a new damage value each time
+//   damage = _.random(5, 20);
+
+//   // Lower the attackee's health
+//   attackee.health -= damage;
+
+//   // If Attackee is still alive, decrease health!
+//   if (attackee.health > 0) {
+
+//     // Update the individual attacked's health visually
+//     attackee.elem.find('input').val(attackee.health);
+  
+//     // When we attack a monster, he fights back
+//     if (attackee instanceof Monster) {
+//       console.log('You were attacked back');
+//       attackBTN.prop('disabled', true).text('Defending...');
+//       _.delay(process_attack, 1000, attackee, attacker);
+//     }
+
+// }
 
 
-// lifeBTN.on('click', function () {
-//   you.choose(challenge);
-// });

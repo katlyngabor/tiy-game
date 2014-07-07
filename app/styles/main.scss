@@ -6,13 +6,29 @@
 
 @mixin buttonFont{
 
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 30px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 30px;
 
 }
 
+@mixin mainTextFont{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+}
+
+@mixin optionsButton{	
+	width:150px;
+	height:150px;
+	margin-bottom:100px;
+	border-radius:150px;
+	background-color:black;
+	color:white;
+}
+
+$blue:#007ab3;
+
 body {
-  background: black;
+  background: black;	
 }
 
 .birthButton{
@@ -26,11 +42,15 @@ body {
 
 }
 
+
 .main-text{
 	color:white;
 	width:500px;
 	margin:0 auto;
-	margin-top: 75px;
+	margin-top: 20px;
+	text-align:center;
+	@include mainTextFont;
+
 }
 
 .lifeButton {
@@ -43,11 +63,70 @@ body {
 	border-style: dashed;
 }
 
-.player{
-	visibility:hidden;
+
+#lifePoints{
+	text-align:center;
+	width:60px;
+	margin-top:10px;
+	margin-bottom:10px;
+	border-radius:100px;
+
 }
 
-.challenge{
+.playerHolder{
+	text-align:center;
+	margin:0 auto;
+}
+
+.player{
+	color:$blue;
+	text-align:center;
+	margin-bottom:50px;
+	margin-top:100px;
 	visibility:hidden;
+	border-style:dotted;
+	border-color:$blue;	
+	width:200px;
+	height:200px;
+	border-radius:100px;
+	padding-top:55px;
+	display:inline-block;	
+	
+}
+
+
+.richButton{
+	text-align:center;
+	margin-top:50px;
+	margin-bottom:100px;
+	color:white;
+
+}
+
+.richButton1{
+	background-color:black;
+	border-style:dotted;
+	padding:10px;
+	margin-top:30px;
+}
+
+.moreButtons{
+	text-align:center;
+	margin-top:50px;
+
+}
+
+.travelButton{
+	@include optionsButton;
+	margin-right:40px;
+}
+
+.partyButton{
+	@include optionsButton;
+}
+
+.collegeButton{
+	@include optionsButton;	
+	margin-right:40px;
 }
 
