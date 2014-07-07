@@ -3,5 +3,51 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+
+@mixin buttonFont{
+
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 30px;
+
+}
+
 body {
   background: black;
+}
+
+.birthButton{
+	margin: 0 auto;
+	display:block;
+	background-color:black;
+	color:white;
+	@include buttonFont;
+	margin-top:300px;
+	border-style: dashed;
+
+}
+
+.main-text{
+	color:white;
+	width:500px;
+	margin:0 auto;
+	margin-top: 75px;
+}
+
+.lifeButton {
+	margin: 0 auto;
+	display:block;
+	background-color:black;
+	color:white;
+	@include buttonFont;
+	margin-top:300px;
+	border-style: dashed;
+}
+
+.player{
+	visibility:hidden;
+}
+
+.challenge{
+	visibility:hidden;
+}
+
