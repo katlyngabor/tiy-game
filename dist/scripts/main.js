@@ -422,8 +422,9 @@ $('.partyButton').on('click', function(){
 
     }
 
+//this is broken
     if (you.lifePoints <= 0){
-      $('body').empty().css('background', 'url(http://static.fjcdn.com/pictures/sad_18190e_1734990.jpg)');
+      $('body').empty().css('background', 'url(http://cl.jroo.me/z3/V/p/q/e/a.baa-happy-cat-is-happy.jpg');
 
     }
 });
