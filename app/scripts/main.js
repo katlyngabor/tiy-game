@@ -365,7 +365,7 @@ $('.partyButton').on('click', function(){
       $('.poorButtonHolder').append('<button class="workButton">Want work? Choose me.</button>');
       $('.main-text').html('Being poor limits your options...');
 
-});
+// });
 
   $('.communityCollegeButton').on('click', function(){
 
@@ -380,11 +380,11 @@ $('.partyButton').on('click', function(){
   $('.poorButtonHolder').remove();
 
     if (pointsChange > 0) {
-      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
+      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting your degree! Congrats! Now what?');
     }
 
     else {
-      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
+      $('.main-text').html('You just lost ' + pointsChange + ' Life Points taking out too much in loans. Now you are in super debt. Now what?');
     }
   
   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
@@ -398,6 +398,37 @@ $('.partyButton').on('click', function(){
     $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
 
   };
+
+  $('.afterCollege').on('click', function(){
+
+    pointsChange = _.random(-50, 10);
+
+    you.lifePoints += pointsChange;
+
+  if (you.lifePoints > 0) {
+    you.elem.find('input').val(you.lifePoints);
+  }
+
+   if(pointsChange > 0){
+      $('.main-text').html('You just earned ' + pointsChange + ' Life Points volunteering to read to children at the library! Adorable!');
+    }
+
+    if(pointsChange < 0){
+      $('.main-text').html('You just lost ' + pointsChange + " Life Points for ignoring your grandmother's calls. Rude.");
+    }
+
+    if (you.lifePoints >= 200){
+      $('body').empty().css('background', 'url(http://www.nithyananda.org/sites/default/files/teaser_images_article/life-goal.jpg?1320128066)');
+
+    }
+
+    if (you.lifePoints <= 0){
+      $('body').empty().css('background', 'url(http://static.fjcdn.com/pictures/sad_18190e_1734990.jpg)');
+
+    }
+});
+
+});
 
 });
 
@@ -427,69 +458,6 @@ $('.partyButton').on('click', function(){
 //   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
 // var process_attack = function (attacker, attackee) {
 
-//   // Reset our Attack Button
-//   attackBTN.prop('disabled', false).text('Attack');
 
-//   // Generate a new damage value each time
-//   damage = _.random(5, 20);
-
-//   // Lower the attackee's health
-//   attackee.health -= damage;
-
-//   // If Attackee is still alive, decrease health!
-//   if (attackee.health > 0) {
-
-//     // Update the individual attacked's health visually
-//     attackee.elem.find('input').val(attackee.health);
-  
-//     // When we attack a monster, he fights back
-//     if (attackee instanceof Monster) {
-//       console.log('You were attacked back');
-//       attackBTN.prop('disabled', true).text('Defending...');
-//       _.delay(process_attack, 1000, attackee, attacker);
-//     }
-
-//   } else {
-
-//     if (attackee instanceof Player) {
-//       // You Loose!!
-//       $('body').empty().css('background', 'url(http://goo.gl/0fmNnb)');
-//     } else {
-//       // You Win!!
-//       $('body').empty().css('background', 'url(http://goo.gl/zeyWpy)');
-//     }
-
-//   }
-// };
-  
-
-
-//  // Function to attack a Monster
-// // This function should be broken down a little bit more, but you get the point.
-// var process_attack = function (attacker, attackee) {
-
-//   // Reset our Attack Button
-//   attackBTN.prop('disabled', false).text('Attack');
-
-//   // Generate a new damage value each time
-//   damage = _.random(5, 20);
-
-//   // Lower the attackee's health
-//   attackee.health -= damage;
-
-//   // If Attackee is still alive, decrease health!
-//   if (attackee.health > 0) {
-
-//     // Update the individual attacked's health visually
-//     attackee.elem.find('input').val(attackee.health);
-  
-//     // When we attack a monster, he fights back
-//     if (attackee instanceof Monster) {
-//       console.log('You were attacked back');
-//       attackBTN.prop('disabled', true).text('Defending...');
-//       _.delay(process_attack, 1000, attackee, attacker);
-//     }
-
-// }
 
 
