@@ -208,28 +208,113 @@ if (you.lifePoints > 0) {
   $('.richButton1').on('click', function(){
       $(this).remove();
 
-      $('.moreButtons').append('<button class="collegeButton">Want college? Choose me.</button>');
-      $('.moreButtons').append('<button class="travelButton">Want travel? Choose me.</button>');
-      $('.moreButtons').append('<button class="partyButton">Want party? Choose me.</button>');
-      $('.main-text').html('Being rich gives you certain options...');
+      $('<div class="collegeButtonHolder"></div>').replaceAll('.poorButton');
+      $('.collegeButtonHolder').append('<button class="collegeButton">Want college? Choose me.</button>');
+      $('.collegeButtonHolder').append('<button class="travelButton">Want travel? Choose me.</button>');
+      $('.collegeButtonHolder').append('<button class="partyButton">Want party? Choose me.</button>');
+      $('.main-text').html('Being rich gives you more options...');
 
 
 
   $('.collegeButton').on('click',function(){
-    pointsChange = _.random(10, 20);
+    pointsChange = _.random(10);
 
     you.lifePoints += pointsChange;
     
     if (you.lifePoints > 0){
       you.elem.find('input').val(you.lifePoints);
 
-  };
+  }
+
+  $('.collegeButtonHolder').remove();
+  $('.main-text').html('You just earned ' + pointsChange + ' Life Points for going to college. Cool. Now what?');
+  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+
+  }); 
+
+
+  $('.afterCollege').on('click', function(){
+
+    pointsChange = _.random(-50, 10);
+
+    you.lifePoints += pointsChange;
+
+  if (you.lifePoints > 0) {
+    you.elem.find('input').val(you.lifePoints);
+  }
+});
+
+$('.travelButton').on('click', function(){
+
+  pointsChange= _.random(-50,10);
+
+  you.lifePoints += pointsChange;
+
+    if(pointsChange > 0){
+      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for travelling the world. Cool. Now what?');
+    }
+
+    if(pointsChange < 0){
+      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for getting Malaria. Oops. Now what?');
+    }
+
+  if (you.lifePoints > 0){
+    you.elem.find('input').val(you.lifePoints);
+  }
+
+  $('.collegeButtonHolder').remove();
+  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+
+  }); 
+
+$('.partyButton').on('click', function(){
+
+  pointsChange= _.random(-50, 10);
+
+  you.lifePoints += pointsChange;
+
+  if (you.lifePoints > 0){
+    you.elem.find('input').val(you.lifePoints);
+  }
+
+  $('.collegeButtonHolder').remove();
+
+    if (pointsChange > 0) {
+      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
+    }
+
+    else {
+      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
+    }
   
-  });  
-});
+  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+
+  });
+
+
 });
 
 
+
+  if (rand_money == "poor"){
+    $('.poorButton').append('<button class="poorButton1">Ready to continue?</button>');
+
+  }
+
+  $('.poorButton1').on('click', function(){
+      $(this).remove();
+
+
+
+      $('<div class="poorButtonHolder"></div>').replaceAll('.poorButton');
+      $('.poorButtonHolder').append('<button class="communityCollegeButton">Want school? Choose me.</button>');
+      $('.poorButtonHolder').append('<button class="gangButton">Want street-cred? Choose me.</button>');
+      $('.poorButtonHolder').append('<button class="workButton">Want work? Choose me.</button>');
+      $('.main-text').html('Being poor limits your options...');
+
+});
+
+});
 // var process_attack = function (attacker, attackee) {
 
 //   // Reset our Attack Button

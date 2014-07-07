@@ -26,6 +26,7 @@
 }
 
 $blue:#007ab3;
+$purple:#994d7c;
 
 body {
   background: black;	
@@ -116,6 +117,10 @@ body {
 
 }
 
+.collegeButtonHolder{
+	text-align:center;
+}
+
 .travelButton{
 	@include optionsButton;
 	margin-right:40px;
@@ -130,3 +135,46 @@ body {
 	margin-right:40px;
 }
 
+.afterCollegeEvent{
+	text-align:center;
+}
+.afterCollege{
+	@include buttonFont;
+	font-size:20px;
+	color:$purple;
+	background-color:black;
+	border-style: dotted;
+	border-size: 4px;
+	margin-bottom:100px;
+}
+
+.poorButton{
+	text-align:center;
+}
+
+.poorButton1{
+	background-color:black;
+	border-style:dotted;
+	padding:10px;
+	margin-top:30px;
+	color:white;
+
+}
+
+.poorButtonHolder{
+	text-align:center;
+}
+
+.communityCollegeButton{
+	@include optionsButton;
+	margin-right:40px;
+}
+
+.gangButton{
+	@include optionsButton;
+	margin-right:40px;
+}
+
+.workButton{
+	@include optionsButton;
+}
