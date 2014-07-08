@@ -661,11 +661,11 @@ $('.workButton').on('click', function(){ //ends at bottom
       $('.poorButtonHolder').remove();
 
         if (pointsChange > 0) {
-          $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting your degree! Congrats! Now what?');
+          $('.main-text').html('You just earned ' + pointsChange + ' Life Points for being such a great worker. You got a promotion!');
         }
 
         else {
-          $('.main-text').html('You just lost ' + pointsChange + ' Life Points taking out too much in loans. Now you are in super debt. Now what?');
+          $('.main-text').html('You just lost ' + pointsChange + ' Life Points for skipping work.');
         }
       
         $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
