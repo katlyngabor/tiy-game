@@ -75,7 +75,7 @@ var randoItem = function (array) {
  		console.log (you.lifePoints);
 
 
-
+//describes attributes
 
  		if (you.lifePoints === 84){
       $('.main-text').animate().html("You are born. Life has chosen for you to be " + rand_gender + ", " + rand_money + ", " + rand_race + ", and have "
@@ -217,146 +217,237 @@ if (you.lifePoints > 0) {
 
 
   $('.collegeButton').on('click',function(){
-    pointsChange = _.random(10);
+    pointsChange = _.random(20);
 
     you.lifePoints += pointsChange;
     
-    if (you.lifePoints > 0){
-      you.elem.find('input').val(you.lifePoints);
+      if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
 
-  }
+        $('.collegeButtonHolder').remove();
+        $('.main-text').html('You just earned ' + pointsChange + ' Life Points for going to college. Cool. Now what?');
+        $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
 
-  $('.collegeButtonHolder').remove();
-  $('.main-text').html('You just earned ' + pointsChange + ' Life Points for going to college. Cool. Now what?');
-  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+      }
 
-  // }); 
+        $('.afterCollege').on('click', function(){
 
+            pointsChange = _.random(-50, 10);
 
-  $('.afterCollege').on('click', function(){
+            you.lifePoints += pointsChange;
 
-    pointsChange = _.random(-50, 10);
+              if (you.lifePoints > 0) {
+                you.elem.find('input').val(you.lifePoints);
+              }
+
+              if( pointsChange > 0 && 10 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life points for passing all your exams. Booya!');
+              
+              }
+
+              if( pointsChange > 10 && 30 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life Points for joining the Foreign Studies Club. How hip to the skip, are you!');
+              }
+
+              if( pointsChange > 30 && 50 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life Points for making a new friend in your Biology lab. Friendship is groovy.');
+              }
+
+              if(pointsChange < 0 && -10 < pointsChange){
+                $('.main-text').html('You just lost ' + pointsChange + ' Life points for gaining 30lbs your freshman year! WHOA!');
+              }
+
+               if(pointsChange < -10 && -30 < pointsChange){
+                $('.main-text').html('You just lost ' + pointsChange + ' Doing the walk of shame... once a week. Yikes.');
+              }
+
+               if( pointsChange < -30 && -50 < pointsChange){
+                $('.main-text').html('You just lost ' + pointsChange + ' Failing all of your exams. All of them?! Really!?');
+              }
+
+              if (you.lifePoints >= 200){
+                $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+              }
+
+              if (you.lifePoints <= 0){
+                $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+              }
+        }); //ends random event button function
+
+  }); //ends college button click function
+
+   
+    $('.travelButton').on('click', function(){
+    
+    pointsChange = _.random(20);
 
     you.lifePoints += pointsChange;
 
-  if (you.lifePoints > 0) {
-    you.elem.find('input').val(you.lifePoints);
-  }
+      if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
 
-   if(pointsChange > 0){
-      $('.main-text').html('You just earned ' + pointsChange + ' for changing to a healthy diet. Good for you!');
-    }
+        $('.collegeButtonHolder').remove();
+        $('.main-text').html('You just earned ' + pointsChange + ' Life Points for traveling the world and becoming\
+           a classy cultured individual. Cool. Now what?');
+        $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+      }
 
-    if(pointsChange < 0){
-      $('.main-text').html('You just lost ' + pointsChange + ' for running over a possom with your car. Rude.');
-    }
+            //below functions the random event button
+        $('.afterCollege').on('click', function(){
 
-    if (you.lifePoints >= 200){
-      $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+          pointsChange = _.random(-50, 50);
 
-    }
+          you.lifePoints += pointsChange;
 
-    if (you.lifePoints <= 0){
-      $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+          // below earning and losing points
 
-    }
-});
+        if (you.lifePoints > 0) {
+          you.elem.find('input').val(you.lifePoints);
+        }
 
-});
+          if( pointsChange > 0 && 10 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' trying new foods from around the world. Trying new things is important!');
+          }
 
+          if( pointsChange > 10 && 30 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life Points for keeping in touch with your family \
+                  even when you are on another continent. Family first!');
+          }
 
-//earning and losing points
+          if( pointsChange > 30 && 50 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for making great friends from around the world!');
+          }
 
-$('.travelButton').on('click', function(){
+          if(pointsChange < 0 && -10 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for sitting in your hostel and watching TV for a week straight. GO LIVE! That is why you travel, dummy!');
+          }
 
-  pointsChange= _.random(-50,50);
+           if(pointsChange < -10 && -30 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for refusing to try to communicate in another language because "real people speak English". Douche.');
+          }
 
-  you.lifePoints += pointsChange;
+           if( pointsChange < -30 && -50 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for making fun of how all the locals talk. Grow up, loser.');
+          }
 
-    if(pointsChange > 0){
-      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for travelling the world. Cool. Now what?');
-    }
+          if (you.lifePoints >= 200){
+            $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
 
-    if(pointsChange < 0){
-      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for getting Malaria. Oops. Now what?');
-    }
+          }
 
+          if (you.lifePoints <= 0){
+            $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
 
-//win, lose, or continue?
+          }
+        }); //ends random event button function
 
+  }); //ends travel button function
 
- 
-  if (you.lifePoints > 0){
-    you.elem.find('input').val(you.lifePoints);
-  }
-
- if (you.lifePoints >= 200){
-    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
-
-  }
-
-  if (you.lifePoints <= 0){
-    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
-
-  }
-
-
-  $('.collegeButtonHolder').remove();
-  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
-
-  }); 
 
 $('.partyButton').on('click', function(){
 
-  pointsChange= _.random(-50, 50);
+      pointsChange= _.random(-50, 50);
 
-  you.lifePoints += pointsChange;
+      you.lifePoints += pointsChange;
 
-  if (you.lifePoints > 0){
-    you.elem.find('input').val(you.lifePoints);
-  }
+      if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
+      // }
 
-  $('.collegeButtonHolder').remove();
+          $('.collegeButtonHolder').remove();
 
-    if (pointsChange > 0) {
-      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
-    }
+          if (pointsChange > 0) {
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
+          }
 
-    else {
-      $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
-    }
-  
-  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+          else {
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
+          }
+        
+          $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
+      }
+
+        //below functions the random event button
+        $('.afterCollege').on('click', function(){
+
+          pointsChange = _.random(-50, 50);
+
+          you.lifePoints += pointsChange;
+
+          // below earning and losing points
+
+          if (you.lifePoints > 0) {
+          you.elem.find('input').val(you.lifePoints);
+          } 
+
+         if( pointsChange > 0 && 10 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' reading a book instead of watching 10 hours of netflix. Good job!');
+          }
+
+          if( pointsChange > 10 && 30 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting up early and eating a healthy breakfast instead of\
+             sleeping until 3pm and eating left-over take-out. Progress!');
+          }
+
+          if( pointsChange > 30 && 50 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for standing up to a bully! Suck it, bully!');
+          }
+
+          if(pointsChange < 0 && -10 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for drunk texting your ex. And your mom. And your professor. And your grandma. Get it together');
+          }
+
+           if(pointsChange < -10 && -30 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for forgetting to call your mother on her birthday. She gave birth to you!');
+          }
+
+           if( pointsChange < -30 && -50 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for for getting drunk and yelling at an old woman as she crossed the street. Rude!');
+          }
 
 
-//win, lose, continue?
+          if (you.lifePoints >= 200){
+            $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
 
-  if (you.lifePoints >= 200){
-    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+          }
 
-  }
-  if (you.lifePoints > 0){
-    you.elem.find('input').val(you.lifePoints);
-  }
+          if (you.lifePoints <= 0){
+            $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
 
-  if (you.lifePoints <= 0){
-    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+          }
+    //win, lose, continue?
 
-  }
+     if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
+      }
 
-  });
+      if (you.lifePoints >= 200){
+        $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+      }
+
+      if (you.lifePoints <= 0){
+        $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+      }
+
+    }); //ends random event button function
+
+  }); //ends party button function
 
 
-});
+}); //ends rich button
 
 
 
-  if (rand_money == "poor"){
-    $('.poorButton').append('<button class="poorButton1">Ready to continue?</button>');
+if (rand_money == "poor"){
+  $('.poorButton').append('<button class="poorButton1">Ready to continue?</button>');
 
-  }
+}
 
-  $('.poorButton1').on('click', function(){
+$('.poorButton1').on('click', function(){
       $(this).remove();
 
       $('<div class="poorButtonHolder"></div>').replaceAll('.poorButton');
@@ -367,27 +458,80 @@ $('.partyButton').on('click', function(){
 
 // });
 
-  $('.communityCollegeButton').on('click', function(){
+  $('.communityCollegeButton').on('click', function(){ //ends at bottom
 
-     pointsChange= _.random(-50, 50);
+    pointsChange= _.random(-50, 50);
 
     you.lifePoints += pointsChange;
 
-  if (you.lifePoints > 0){
-    you.elem.find('input').val(you.lifePoints);
-  }
-
-  $('.poorButtonHolder').remove();
-
-    if (pointsChange > 0) {
-      $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting your degree! Congrats! Now what?');
-    }
-
-    else {
-      $('.main-text').html('You just lost ' + pointsChange + ' Life Points taking out too much in loans. Now you are in super debt. Now what?');
-    }
+    if (you.lifePoints > 0){
+      
+      you.elem.find('input').val(you.lifePoints);
   
-  $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
+      $('.poorButtonHolder').remove();
+
+        if (pointsChange > 0) {
+          $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting your degree! Congrats! Now what?');
+        }
+
+        else {
+          $('.main-text').html('You just lost ' + pointsChange + ' Life Points taking out too much in loans. Now you are in super debt. Now what?');
+        }
+      
+        $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
+
+    } //ends if lifePoints statement
+
+    $('.afterCollege').on('click', function(){
+
+          pointsChange = _.random(-50, 50);
+
+          you.lifePoints += pointsChange;
+
+          // below earning and losing points
+
+          if (you.lifePoints > 0) {
+          you.elem.find('input').val(you.lifePoints);
+          } 
+
+         if( pointsChange > 0 && 10 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for complimenting a stranger. It could have come off creepy, but it came off super sweet!');
+          }
+
+          if( pointsChange > 10 && 30 > pointsChange ){
+                $('.main-text').html('You just earned ' + pointsChange + ' Life Points for rescuing a puppy from the clutches of a giant hawk. That was a weird moment!');
+          }
+
+          if( pointsChange > 30 && 50 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting a great internship at your dream company! You are on your way up!');
+          }
+
+          if(pointsChange < 0 && -10 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for wearing you pajamas to Walmart at 4 in the afternoon. Lazy.');
+          }
+
+           if(pointsChange < -10 && -30 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for getting in a fight at a bar and spending the night in jail. Now what?');
+          }
+
+           if( pointsChange < -30 && -50 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for seeing someone drop his wallet and swiping it! That is awful! Now what?');
+          }
+
+          if (you.lifePoints >= 200){
+            $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+          }
+
+          if (you.lifePoints <= 0){
+            $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+          }
+//win, lose, continue?
+
+  if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
+  }
 
   if (you.lifePoints <= 0){
     $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
@@ -397,68 +541,213 @@ $('.partyButton').on('click', function(){
    if (you.lifePoints >= 200){
     $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
 
-  };
+  }
 
-  $('.afterCollege').on('click', function(){
 
-    pointsChange = _.random(-50, 10);
+  }); //ends random event button function
+
+  }); //ends community college button function
+
+
+
+//TEMPLATE//
+
+$('.gangButton').on('click', function(){ //ends at bottom
+
+    pointsChange= _.random(-50, 50);
 
     you.lifePoints += pointsChange;
 
-  if (you.lifePoints > 0) {
-    you.elem.find('input').val(you.lifePoints);
-  }
+    if (you.lifePoints > 0){
+      
+      you.elem.find('input').val(you.lifePoints);
+  
+      $('.poorButtonHolder').remove();
 
-   if(pointsChange > 0){
-      $('.main-text').html('You just earned ' + pointsChange + ' Life Points volunteering to read to children at the library! Adorable!');
-    }
+        if (pointsChange > 0) {
+          $('.main-text').html('You just earned ' + pointsChange + ' Life Points for escaping gang life and becoming a counselor for at-risk children. Now what?');
+        }
 
-    if(pointsChange < 0){
-      $('.main-text').html('You just lost ' + pointsChange + " Life Points for ignoring your grandmother's calls. Rude.");
-    }
+        else {
+          $('.main-text').html('You just lost ' + pointsChange + ' Life Points for being a snitch and getting your friend shot. Awkward...Now what?');
+        }
+      
+        $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
 
-    if (you.lifePoints >= 200){
-      $('body').empty().css('background', 'url(http://www.nithyananda.org/sites/default/files/teaser_images_article/life-goal.jpg?1320128066)');
+    } //ends if lifePoints statement
 
-    }
+    $('.afterCollege').on('click', function(){
+
 
 //this is broken
-    if (you.lifePoints <= 0){
-      $('body').empty().css('background', 'url(http://cl.jroo.me/z3/V/p/q/e/a.baa-happy-cat-is-happy.jpg');
+//     if (you.lifePoints <= 0){
+//       $('body').empty().css('background', 'url(http://cl.jroo.me/z3/V/p/q/e/a.baa-happy-cat-is-happy.jpg');
+// =======
+          pointsChange = _.random(-50, 50);
 
-    }
-});
+          you.lifePoints += pointsChange;
 
-});
+          // below earning and losing points
 
-});
+          if (you.lifePoints > 0) {
+          you.elem.find('input').val(you.lifePoints);
+          } 
 
-});
+          if( pointsChange > 0 && 10 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for making a budget for yourself. So Responsible!');
+          }
+
+          if( pointsChange > 10 && 30 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting a new job! So good!!');
+          }
+
+          if( pointsChange > 30 && 50 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for saving up and moving into a new apartment in a safe neighborhood. You are a smart one!');
+          }
+
+          if(pointsChange < 0 && -10 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for wearing you pajamas to Walmart at 4 in the afternoon. Lazy.');
+          }
+
+           if(pointsChange < -10 && -30 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for getting in a fight at a bar and spending the night in jail. Now what?');
+          }
+
+           if( pointsChange < -30 && -50 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for seeing someone drop his wallet and swiping it! That is awful! Now what?');
+          }
+
+          if (you.lifePoints >= 200){
+            $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+          }
+
+          if (you.lifePoints <= 0){
+            $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+          }
+//win, lose, continue?
+
+  // if (you.lifePoints > 0){
+  //       you.elem.find('input').val(you.lifePoints);
+  // }
+
+  // if (you.lifePoints <= 0){
+  //   $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+  // }
+
+  //  if (you.lifePoints >= 200){
+  //   $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+  // }
 
 
-// $('.partyButton').on('click', function(){
+  }); //ends random event button function
 
-//   pointsChange= _.random(-50, 50);
+  }); //ends gang college button function
 
-//   you.lifePoints += pointsChange;
 
-//   if (you.lifePoints > 0){
-//     you.elem.find('input').val(you.lifePoints);
-//   }
+$('.workButton').on('click', function(){ //ends at bottom
 
-//   $('.collegeButtonHolder').remove();
+    pointsChange= _.random(-50, 50);
 
-//     if (pointsChange > 0) {
-//       $('.main-text').html('You just earned ' + pointsChange + ' Life Points for partying while you still can. Cool. Now what?');
-//     }
+    you.lifePoints += pointsChange;
 
-//     else {
-//       $('.main-text').html('You just lost ' + pointsChange + ' Life Points for destroying too many brain cells. Oops. Now what?');
-//     }
+    if (you.lifePoints > 0){
+      
+      you.elem.find('input').val(you.lifePoints);
   
-//   $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>'); 
-// var process_attack = function (attacker, attackee) {
+      $('.poorButtonHolder').remove();
 
+        if (pointsChange > 0) {
+          $('.main-text').html('You just earned ' + pointsChange + ' Life Points for getting your degree! Congrats! Now what?');
+        }
+
+        else {
+          $('.main-text').html('You just lost ' + pointsChange + ' Life Points taking out too much in loans. Now you are in super debt. Now what?');
+        }
+      
+        $('.afterCollegeEvent').append('<button class="afterCollege">Random Life Event. Click me.</button>');
+
+    } //ends if lifePoints statement
+
+    $('.afterCollege').on('click', function(){
+
+          pointsChange = _.random(-50, 50);
+
+          you.lifePoints += pointsChange;
+
+          // below earning and losing points
+
+          if (you.lifePoints > 0) {
+          you.elem.find('input').val(you.lifePoints);
+          } 
+
+          if( pointsChange > 0 && 10 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for changing to a healthy diet. Good for you!');
+          }
+
+          if( pointsChange > 10 && 30 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for making a budget for yourself. So responsible!');
+          }
+
+          if( pointsChange > 30 && 50 > pointsChange ){
+            $('.main-text').html('You just earned ' + pointsChange + ' Life Points for opening a soup kitchen. So caring!');
+          }
+
+          if(pointsChange < 0 && -10 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for running over a possom with your car. Rude.');
+          }
+
+           if(pointsChange < -10 && -30 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for eating your feelings and gaining 78 pounds. Now what?');
+          }
+
+           if( pointsChange < -30 && -50 < pointsChange){
+            $('.main-text').html('You just lost ' + pointsChange + ' Life Points for losing your job after showing up to work late and high. Dumb. Now what?');
+          }
+
+          if (you.lifePoints >= 200){
+            $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+          }
+
+          if (you.lifePoints <= 0){
+            $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+          }
+//win, lose, continue?
+
+  if (you.lifePoints > 0){
+        you.elem.find('input').val(you.lifePoints);
+  }
+
+  if (you.lifePoints <= 0){
+    $('body').empty().css('background', 'url(http://gph.is/1aQOBIj)');
+
+  }
+
+   if (you.lifePoints >= 200){
+    $('body').empty().css('background', 'url(http://gph.is/1pUlOIF)');
+
+  }
+
+
+  }); //ends random event button function
+
+  }); //ends work college button function
+
+
+
+
+
+
+}); //ends poor button on click function
+
+
+
+}); //ends overall function?
 
 
 
